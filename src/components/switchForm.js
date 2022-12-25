@@ -1,4 +1,4 @@
-function SwitchForm(props) {
+const SwitchForm = (props) => {
 
 	
 	return (

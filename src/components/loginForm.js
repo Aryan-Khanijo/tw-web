@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { FetchAPIResponse } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm(prop) {
+const LoginForm = (prop) => {
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');

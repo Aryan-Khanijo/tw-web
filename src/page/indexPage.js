@@ -1,5 +1,5 @@
 import '../static/css/indexPage.css';
-function IndexPage() {
+const IndexPage = () => {
 	return (
 		<div className="indexContainer">
 			<h1 className='indexPage'>Welcome to Devil Clone</h1>

@@ -5,7 +5,7 @@ import SwitchForm from '../components/switchForm';
 import LoginForm from '../components/loginForm';
 import SignUpForm from '../components/signUpForm';
 
-function LoginSignUpPage() {
+const LoginSignUpPage = () => {
 
 	const [contaianerClass, setContainerClass] = useState('login-container');
 	console.log('here');

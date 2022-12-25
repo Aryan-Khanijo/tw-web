@@ -1,6 +1,6 @@
 import { FetchAPIResponse } from "../utils/api";
 import { useCallback, useState } from "react";
-function SignUpForm(prop) {
+const SignUpForm = (prop) => {
 
 	const [username, setUsername] = useState('');
 	const [name, setName] = useState('');

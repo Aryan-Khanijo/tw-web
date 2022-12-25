@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import '../static/css/navbar.css';
 
-function NavBar() {
+const NavBar = () => {
 
 	const [user, setUser] = useState(null);
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
