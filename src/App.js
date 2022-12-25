@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import './static/css/base.css';
+import LoginSignUpPage from './page/loginSignUpPage';
+import NavBar from './components/navbar';
+import IndexPage from './page/indexPage';
+import { useState, useEffect } from 'react';
+import NotFound from './components/notFound';
+import HomePage from './page/homePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Searchbar from './components/searchBar';
+import MyTweetsPage from './page/mytweets';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+	useEffect(() => {
+		setIsAuthenticated(localStorage.getItem('authorized'));
+	}, []);
+	return (
+		<Router>
+			<div className="app">
+				<NavBar />
+				<Searchbar />
+				<Routes>
+					<Route path='/' element={<IndexPage />} />
+					<Route path="/login" element={<LoginSignUpPage />} />
+					{isAuthenticated ? (
+						<>
+							{/* <Route path="/profile" element={<ProfilePage />} /> */}
+							<Route path="/mytweets" element={<MyTweetsPage />} />
+							<Route path="/home" element={<HomePage />} />
+						</>
+					) : (
+						<Route path="*" element={<NotFound />} />
+					)}
+				</Routes>
+			</div>
+		</Router>
+	);
 }
 
 export default App;
