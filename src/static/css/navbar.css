@@ -45,7 +45,7 @@ form {
 
 }
 
-input[type="text"] {
+form > input[type="text"] {
 	width: 200px;
 	height: 30px;
 	border: 1px solid rgba(204, 204, 204, 0.291);
@@ -55,7 +55,7 @@ input[type="text"] {
 	font-size: 16px;
 }
 
-button[type="submit"] {
+button.search[type="submit"] {
 	width: 50px;
 	height: 30px;
 	background-color: #9297e0;
@@ -65,7 +65,7 @@ button[type="submit"] {
 	cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button.search[type="submit"]:hover {
 	background-color: #ff73b3;
 }
 

@@ -5,7 +5,7 @@ import SwitchForm from '../components/switchForm';
 import LoginForm from '../components/loginForm';
 import SignUpForm from '../components/signUpForm';
 
-const LoginSignUpPage = () => {
+const LoginSignUpPage = (prop) => {
 
 	const [contaianerClass, setContainerClass] = useState('login-container');
 	console.log('here');
@@ -19,12 +19,13 @@ const LoginSignUpPage = () => {
 	}, [contaianerClass]);
 
 	
-	const submit = useCallback(() => {
+	const submit = useCallback((auth) => {
 		console.log('Submitting form');
+		prop.setAuth(auth)
 		setTimeout(() => {
 			setContainerClass(contaianerClass + ' login-active');
 			}, 250);
-	}, [contaianerClass]);
+	}, [contaianerClass, prop]);
 
 	const signUpSwitchProps = {
 		text: "Don't have an account?",

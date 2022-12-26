@@ -1,0 +1,57 @@
+.profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 50%;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.name {
+	margin: 0;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.email {
+	margin: 0;
+	font-size: 18px;
+	color: #666;
+}
+
+.stats {
+	display: flex;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+.stat {
+	margin-right: 20px;
+}
+
+.follower-count {
+	font-weight: bold;
+	color: #0077cc;
+	margin-right: 1px;
+}
+
+.following-count {
+	font-weight: bold;
+	color: #0077cc;
+	margin-right: 1px;
+}
+
+.follow-btn {
+	margin-top: 10px;
+	padding: 10px 15px;
+	color: #fff;
+	background-color: #ff73b3;
+	opacity: 1;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}

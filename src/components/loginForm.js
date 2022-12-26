@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { FetchAPIResponse } from "../utils/api";
+import { FetchAPIResponse, FetchUserAPIResponse } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = (prop) => {
+const LoginForm = ({submit}) => {
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -17,16 +17,18 @@ const LoginForm = (prop) => {
 		const response = await FetchAPIResponse('/auth/login', 'POST', data);
 		console.log(response);
 		if(response.status === 200) {
-			prop.submit();
+			submit(true);
 			localStorage.setItem('token', response.data.data.access_token);
 			localStorage.setItem('user', JSON.stringify(response.data.data.user));
 			localStorage.setItem('authorized', true);
+			const followingResp = await FetchUserAPIResponse('/following', 'GET');
+			const ids = followingResp.data.data.map((user) => { return user.user_id });
+			localStorage.setItem('following', ids);
 			setTimeout(() => {
-				console.log(window.location);
 				Navigate('/home');
 			}, 2000);
 		}
-	}, [username, password, prop, Navigate]);
+	}, [username, password, submit, Navigate]);
 
 	const handleUsernameChange = useCallback((e) => {
 		setUsername(e.target.value);

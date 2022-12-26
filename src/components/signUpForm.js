@@ -1,6 +1,6 @@
 import { FetchAPIResponse } from "../utils/api";
 import { useCallback, useState } from "react";
-const SignUpForm = (prop) => {
+const SignUpForm = ({submit}) => {
 
 	const [username, setUsername] = useState('');
 	const [name, setName] = useState('');
@@ -15,13 +15,13 @@ const SignUpForm = (prop) => {
 		};
 		const response = await FetchAPIResponse('/auth/signup', 'POST', data);
 		if (response.status === 201) {
-			prop.submit();
+			submit(false);
 			setTimeout(() => {
 				window.location.reload();
 			}, 2000);
 		}
 		console.log(response);
-	}, [username, name, password, prop]);
+	}, [username, name, password, submit]);
 
 	const handleUsernameChange = useCallback((e) => {
 		setUsername(e.target.value);
