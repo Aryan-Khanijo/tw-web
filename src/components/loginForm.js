@@ -22,8 +22,9 @@ const LoginForm = ({submit}) => {
 			localStorage.setItem('user', JSON.stringify(response.data.data.user));
 			localStorage.setItem('authorized', true);
 			const followingResp = await FetchUserAPIResponse('/following', 'GET');
-			const ids = followingResp.data.data.map((user) => { return user.user_id });
-			localStorage.setItem('following', ids);
+			const ids = followingResp?.data?.data.map((user) => { return user.user_id });
+			if (ids)
+				localStorage.setItem('following', ids);
 			setTimeout(() => {
 				Navigate('/home');
 			}, 2000);
