@@ -19,6 +19,8 @@ const SignUpForm = ({submit}) => {
 			setTimeout(() => {
 				window.location.reload();
 			}, 2000);
+		} else {
+			alert('Something went wrong');
 		}
 		console.log(response);
 	}, [username, name, password, submit]);

@@ -27,6 +27,10 @@ const LoginForm = ({submit}) => {
 			setTimeout(() => {
 				Navigate('/home');
 			}, 2000);
+		} else if (response.status === 401) {
+			alert('Invalid username or password');
+		} else {
+			alert('Something went wrong');
 		}
 	}, [username, password, submit, Navigate]);
 
