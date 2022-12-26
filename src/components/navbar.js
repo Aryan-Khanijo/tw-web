@@ -6,7 +6,9 @@ import '../static/css/navbar.css';
 const NavBar = () => {
 
 	return (
-		<a className='navbar' href='/login'>Login</a>
+		<div className='sidenav'>
+			<a className='navbar' href='/login'>Login</a>
+		</div>
 	)
 }
 
