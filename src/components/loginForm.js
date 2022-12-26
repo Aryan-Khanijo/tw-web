@@ -21,8 +21,10 @@ const LoginForm = ({submit}) => {
 			localStorage.setItem('token', response.data.data.access_token);
 			localStorage.setItem('user', JSON.stringify(response.data.data.user));
 			localStorage.setItem('authorized', true);
+			let ids = null;
 			const followingResp = await FetchUserAPIResponse('/following', 'GET');
-			const ids = followingResp?.data?.data.map((user) => { return user.user_id });
+			if (followingResp?.data?.data)
+				ids = followingResp?.data?.data?.map((user) => { return user.user_id });
 			if (ids)
 				localStorage.setItem('following', ids);
 			setTimeout(() => {
