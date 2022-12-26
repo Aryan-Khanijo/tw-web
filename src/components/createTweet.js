@@ -7,6 +7,7 @@ const CreateTweet = () => {
 
 	const [tweet, setContent] = useState('');
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+	const [message, setMessage] = useState('');
 
 	const handleContentChange = (e) => {
 		setContent(e.target.value);
@@ -20,9 +21,11 @@ const CreateTweet = () => {
 		};
 		const response = await FetchUserAPIResponse('/tweets', 'POST', data);
 		if (response.status === 201) {
-			console.log('Tweet Posted');
+			setMessage('Tweet Posted');
+			document.querySelector('.tweet').value = '';
+
 		} else {
-			console.log('Something went wrong');
+			setMessage('Something went wrong');
 		}
 	}, [tweet, user]);
 
@@ -31,6 +34,7 @@ const CreateTweet = () => {
 	return (
 		<div className='tweet'>
 			<label className='tweet'>Create Tweet</label><br />
+			<label className='tweet-message'>{message}</label><br />
 			<textarea className='tweet'  onChange={(e) => {handleContentChange(e)}} rows="5" cols="50"></textarea><br />
 			<div className="login-btn" onClick={PostTweet}>Submit</div>
 		</div>

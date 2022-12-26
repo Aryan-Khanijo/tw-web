@@ -32,3 +32,10 @@ button.tweet {
 button.tweet:hover {
 	background-color: #45a049;
 }
+
+label.tweet-message {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
+}

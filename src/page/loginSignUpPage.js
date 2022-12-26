@@ -21,11 +21,10 @@ const LoginSignUpPage = (prop) => {
 	
 	const submit = useCallback((auth) => {
 		console.log('Submitting form');
-		prop.setAuth(auth)
 		setTimeout(() => {
 			setContainerClass(contaianerClass + ' login-active');
 			}, 250);
-	}, [contaianerClass, prop]);
+	}, [contaianerClass]);
 
 	const signUpSwitchProps = {
 		text: "Don't have an account?",
