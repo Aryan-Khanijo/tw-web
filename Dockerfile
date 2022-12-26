@@ -1,22 +1,11 @@
-# STEP 1
-FROM node:14-alpine3.15 as build-tw-web
-RUN mkdir /app
-WORKDIR /app
-COPY ./package.json /app
-COPY ./yarn.lock /app
-RUN npm install
-COPY . .
-#STEP 2
-#FROM build-step as development
-#RUN mkdir /react
-#WORKDIR /react
-#COPY --from=build-step /app .
-CMD [ "yarn", "run", "build" ]
-# CMD ["serve", "-s", "build", "-l", "1337"]
-#CMD ["npm", "start"]
-# #STEP 3
-FROM build as build
-RUN npm run build
-# #STEP 4
-FROM nginx:alpine as production
-COPY --from=build /app/build /usr/share/nginx/html
+FROM node:8.16 as build-deps
+WORKDIR /usr/src/app
+COPY package.json yarn.lock ./
+RUN yarn
+COPY . ./
+RUN yarn build
+
+FROM nginx:1.12-alpine
+COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
